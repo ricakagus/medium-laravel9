@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
 class SiswaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +19,9 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        //
+        // menampilkan semua daat dari model Siswa
+        $siswa = Siswa::all();
+        return view('siswaa.index', compact('siswa'));
     }
 
     /**
@@ -24,6 +32,7 @@ class SiswaController extends Controller
     public function create()
     {
         //
+        return view('siswa.create');
     }
 
     /**
@@ -34,7 +43,25 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validasi data inputan
+        $validated = $request->validate([
+            'nama' => 'required',
+            'nis' => 'required|unique:siswas|max:255',
+            'jenis_kelamin' => 'required',
+            'agama' => 'required',
+            'tgl_lahir' => 'required',
+            'alamat' => 'required'
+        ]);
+
+        $siswa = new Siswa();
+        $siswa->nama = $request->nama;
+        $siswa->nis = $request->nis;
+        $siswa->jenis_kelamin = $request->jenis_kelamin;
+        $siswa->agama = $request->agama;
+        $siswa->tgl_lahir = $request->tgl_lahir;
+        $siswa->alamat = $request->alamat;
+        $siswa->save();
+        return redirect()->route('siswa.index')->with('success', 'Data berhasil dibuat!');
     }
 
     /**
@@ -46,6 +73,8 @@ class SiswaController extends Controller
     public function show($id)
     {
         //
+        $siswa = Siswa::FindOrFail($id);
+        return  view('siswa.show', compact('siswaa'));
     }
 
     /**
@@ -57,6 +86,8 @@ class SiswaController extends Controller
     public function edit($id)
     {
         //
+        $siswa = Siswa::FindOrFail($id);
+        return view('siswa.edit', compact('siswa'));
     }
 
     /**
@@ -69,6 +100,25 @@ class SiswaController extends Controller
     public function update(Request $request, $id)
     {
         //
+        //validasi data inputan
+        $validated = $request->valaidate([
+            'nama' => 'required',
+            'nis' => 'required|unique:siswas|max:255',
+            'jenis_kelamin' => 'required',
+            'agama' => 'required',
+            'tgl_lahir' => 'required',
+            'alamat' => 'required',
+        ]);
+
+        $siswa = Siswa::FindOrFail($id);
+        $siswa->nama = $request->nama;
+        $siswa->nis = $request->nis;
+        $siswa->jenis_kelamin = $request->jenis_kelamin;
+        $siswa->agama = $request->agama;
+        $siswa->tgl_lahir = $request->tgl_lahir;
+        $siswa->alamat = $request->alamat;
+        $siswa->save();
+        return redirect()->route('siswa.index')->with('success', 'Data berhasil diubah!');
     }
 
     /**
@@ -80,5 +130,8 @@ class SiswaController extends Controller
     public function destroy($id)
     {
         //
+        $siswa = Siswa::FindOrFail($id);
+        $siswa->delete();
+        return redirect()->route('siswa.index')->with('success', 'Data berhasil dihapus');
     }
 }

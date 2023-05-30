@@ -1,6 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +19,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+/*Route Siswa, kenapa Route::resource, karena pada saat pembuatan controller ditambahkan -r, 
+sehingga  seluruh fungsi CRUD dalam controller tersebut sudah terbentuk kerangkanya dan dapat diakses secara group melalui route::resiurce */
+Route::resource('siswa', SiswaController::class);
 
 Auth::routes();
 
