@@ -19,7 +19,7 @@
   </div>
 @endif
 
-@if ($error->any())
+@if ($errors->any())
 <div class="alert alert-info alert-dismissible fade show" role="alert">
   <strong>Please check the form below for errors</strong>
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

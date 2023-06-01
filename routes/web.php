@@ -28,6 +28,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 sehingga  seluruh fungsi CRUD dalam controller tersebut sudah terbentuk kerangkanya dan dapat diakses secara group melalui route::resiurce */
 Route::resource('siswa', SiswaController::class);
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
