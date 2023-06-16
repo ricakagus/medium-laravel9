@@ -74,7 +74,7 @@ class SiswaController extends Controller
     {
         //
         $siswa = Siswa::FindOrFail($id);
-        return  view('siswa.show', compact('siswaa'));
+        return  view('siswa.show', compact('siswa'));
     }
 
     /**
@@ -101,7 +101,7 @@ class SiswaController extends Controller
     {
         //
         //validasi data inputan
-        $validated = $request->valaidate([
+        $validated = $request->validate([
             'nama' => 'required',
             'nis' => 'required|unique:siswas|max:255',
             'jenis_kelamin' => 'required',
