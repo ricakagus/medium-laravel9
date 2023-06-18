@@ -13,7 +13,7 @@
 
           <div class="card-body">
             <div class="table-responsive">
-              <div class="table align-middle" id="dataTable">
+              <div class="table align-middle" id="dataTabel">
                 <thead>
                   <tr>
                     <th>No</th>
@@ -27,7 +27,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @php $no = 1 @endphp
+                  @php $no = 1; @endphp
                   @foreach ($siswa as $data)
                   <tr>
                     <td>{{ $no++ }}</td>
@@ -49,9 +49,7 @@
                       </form>
                     </td>
                   </tr>
-                      
                   @endforeach
-
                 </tbody>
               </div>
             </div>
@@ -60,5 +58,4 @@
       </div>
     </div>
   </div>
-    
 @endsection

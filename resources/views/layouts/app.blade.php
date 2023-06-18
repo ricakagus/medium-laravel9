@@ -9,17 +9,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Script-->
-    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
-    <script src="{{ asset('js/jquery-3.7.0.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('DataTables/datatables.min.js') }}"></script>
-    <script>
-        $(document).ready(function(){
-            $('#dataTable').DataTable();
-        });
-    </script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -28,9 +17,21 @@
     {{-- @vite(['resources/sass/app.css', 'resources/js/app.js']) --}}
 
     <!-- Style -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" >
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('DataTables/datatables.min.css') }}">
+
+
+     <!-- Script-->
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+    <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('DataTables/datatables.min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $('#dataTabel').DataTable();
+        });
+    </script>
 </head>
 <body>
     <div id="app">
